@@ -1,0 +1,15 @@
+services:
+  database:
+    image: mysql:9.3.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    labels:
+      com.symfony.server.service-ignore: true
+  database-gui:
+    image: phpmyadmin:5.2.2
+    environment:
+      PMA_HOST: database
+    ports:
+      - 5000:80
