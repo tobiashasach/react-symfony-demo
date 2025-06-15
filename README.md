@@ -15,12 +15,38 @@
 | docker          | 28.1.1  |
 | docker-compose  | 2.35.1  |
 
-## Setup (unix - apt pgk manager)
+---
 
-Execute all commands in the root directory in order.
+## Setup (unix)
 
-1. `docker compose up -d`
-2. `cd frontend; npm i; npm run dev;`
-3. `cd backend; composer install; symfony server:start;`
+At first start the required docker containers with
+
+- `docker compose up -d`
+
+Switch to the frontend directory, install the dependencies and run vite dev server with
+
+- `cd frontend; npm i; npm run dev`
+
+Open a new terminal and switch to the backend directory
+
+- `cd backend`
+
+Install the dependencies
+
+- `composer install`
+
+Create the database
+
+- `symfony console doctrine:database:create`
+
+Migrate the schema
+
+- `symfony console doctrine:migrations:migrate`
+
+Start the symfony dev server
+
+- `symfony server:start`
+
+---
 
 **Important:** This repository is for demonstration purposes only.
